@@ -8,7 +8,7 @@ export function Logo({ size = "large" }: LogoProps) {
   const textSize = size === "large" ? "text-6xl" : "text-2xl";
   
   return (
-    <Link to="/" className={`${textSize} font-bold text-gray-800 tracking-tighter select-none`}>
+    <Link to="/" className={`${textSize} font-bold text-gray-800 dark:text-white tracking-tighter select-none transition-colors duration-300`}>
       Boogle
     </Link>
   );
