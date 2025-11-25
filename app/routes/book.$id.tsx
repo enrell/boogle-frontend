@@ -1,9 +1,7 @@
 import { useLoaderData } from "react-router";
 import type { MetaFunction, LoaderFunctionArgs } from "react-router";
-import { Header } from "../components/layout/Header";
 import { Footer } from "../components/layout/Footer";
 import { getBookMetadata, type BookMetadata } from "~/api";
-import { useState } from "react";
 import { ThemeToggle } from "~/components/ui/ThemeToggle";
 import { Logo } from "~/components/ui/Logo";
 import { Link } from "react-router";
@@ -41,11 +39,12 @@ export const meta: MetaFunction = ({ data }) => {
 
 export function ErrorBoundary({ error }: { error: Error }) {
     return (
-        <div className="flex flex-col items-center min-h-screen">
+        <div className="flex flex-col items-center min-h-screen pt-20">
             <Logo/>
             <main className="flex-1 max-w-6xl mx-auto py-10">
                 <p className="text-md text-red-800"> {error.message} </p>
             </main>
+            <Footer/>
         </div>
     );
 }
@@ -54,8 +53,6 @@ export default function BookDetail() {
     const { book } = useLoaderData<typeof loader>();
     const uniqueFiles = book.files.filter((item, index, self) =>
     index === self.findIndex(f => f.format === item.format))
-
-    console.log(book.files);
 
     return (
         <div className="flex flex-col min-h-screen">    
@@ -156,6 +153,7 @@ export default function BookDetail() {
               
 
             </main>
+            <Footer/>
         </div>
     );
 }

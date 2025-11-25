@@ -26,7 +26,7 @@ export interface SearchResult {
 }
 
 export async function getBookMetadata(bookId: number): Promise<BookMetadata> {
-    const response = await fetch(`${API_BASE_URL}/metadata/${bookId}`);
+    const response = await fetch(`${API_BASE_URL}/metadata/gutenberg/${bookId}`);
 
     if(!response.ok){
         throw new Error(`Failed to search book is not exist: ${response.statusText}`);
@@ -46,10 +46,16 @@ export async function searchBooks(query: string, filter: string): Promise<Search
     if (!results || results.length === 0) {
         throw new Error(`No books found for "${query}"`);
     } 
-    if (filter === 'title') {
-      results = results.filter((book: SearchResult) => 
-        book.title.toLowerCase().includes(query.toLowerCase())
-        )
+   
+    if (filter === "title") {
+  results = results.filter((book: SearchResult) =>
+    (book.title ?? "").toLowerCase().includes(query.toLowerCase())
+  );
+
+    if (results.length === 0) {
+      throw new Error(`No books found for "${query}" in title filter`);
     }
+}
+
   return results;
 }

@@ -3,7 +3,6 @@ import { Logo } from "../components/ui/Logo";
 import { SearchBar } from "../components/features/search/SearchBar";
 import { Footer } from "../components/layout/Footer";
 import { ThemeToggle } from "../components/ui/ThemeToggle";
-import { useSearchParams } from "react-router";
 import { useState } from "react";
 
 export function meta({}: Route.MetaArgs) {
