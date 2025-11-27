@@ -28,7 +28,7 @@ This is the frontend repository for Boogle, built with [React Router](https://re
 
 ### Installation
 
-1. Clone the repository:
+1. Clone the repository, or fork and clone it:
    ```bash
    git clone https://github.com/enrell/boogle-frontend.git
    cd boogle-frontend
